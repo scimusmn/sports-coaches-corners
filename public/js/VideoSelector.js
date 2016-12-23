@@ -45,8 +45,12 @@ class VideoSelector {
   }
 
   readyVideoButtons() {
+    const componentNum = $('#selection_screen').data('component-num');
+
+    const $videoButton = $('.video-button');
+
     // Attach click listeners
-    $('.video-button').on('click', (event) => {
+    $videoButton.on('click', (event) => {
       const eventData = processEventData(event);
       $.ajax({
         type: 'POST',
@@ -56,6 +60,7 @@ class VideoSelector {
       });
 
       // Launch fullscreen video player
+      // TODO: find this based on the ID value
       const src = $(event.currentTarget).attr('video-path');
       VideoSelector.showSelectedVideo(src);
     });
@@ -64,6 +69,21 @@ class VideoSelector {
     $('.home-btn').on('click', () => {
       this.hideSelectedVideo();
     });
+
+    // Video button images
+    $videoButton.each((index, element) => {
+      const $element = $(element);
+      const elementId = $element.attr('id');
+      console.log(elementId);
+      console.log('----^ ^ ^ ^ ^ elementId ^ ^ ^ ^ ^----');
+      const videoId = elementId.replace('video-', '');
+      $element.prepend(`<img src="media/${componentNum}/${videoId}.png" />`);
+
+      // Append a play icon if you need it
+      // $element.append(`<div class='play-btn'></div>`);
+
+    });
+
   }
 
   readyVideoPlayer() {
