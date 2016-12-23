@@ -1,23 +1,5 @@
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
-/* Import Fonts */
-@font-face {
-  font-family: 'National-Bold';
-  src: url('fonts/National-Bold.otf');
-}
-@font-face {
-  font-family: 'National-Light';
-  src: url('fonts/National-Light.otf');
-}
-@font-face {
-  font-family: 'National-Medium';
-  src: url('fonts/National-Medium.otf');
-}
-@font-face {
-  font-family: 'National-Semibold';
-  src: url('fonts/National-Semibold.otf');
-}
-
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -147,14 +129,29 @@ body {
 
 }
 
-h1{
-  font-size: 6em;
-  font-family: 'National-Semibold';
+h1 {
+  margin-top: 54px;
+  font-family: 'Avenir Next Condensed';
+  text-align: center;
+  line-height: 70px;
+  font-size: 65px;
 }
 
-h3{
+h1 span.en,
+h2 span.en{
+  color: #afafaa;
+}
+
+h1 span.es,
+h2 span.es{
+  font-size: 90%;
+  color: #f26322;
+}
+
+h2{
   font-size: 1.6em;
-  font-family: 'National-Medium';
+  font-family: 'Avenir Next Condensed Regular';
+  margin: 0 0 0 20px;
 }
 
 p{
@@ -182,12 +179,13 @@ img {
 
 /* Rows */
 #selection_screen .video-button {
-  background-color: rgba(46, 46, 46, 0.75);
+  background-color: rgba(46, 46, 46, 0.85);
   z-index: 1;
   position: absolute;
   top: 265px;
   left: 30px;
   width: 600px;
+  min-height: 350px;
 }
 
 #selection_screen .video-button img {
