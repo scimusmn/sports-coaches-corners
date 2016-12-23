@@ -6,6 +6,12 @@
 !video_02.mp4
 !video_03.mp4
 
+# Component specific media files go here
+# Track the folder for organization, but don't track
+# the media files. We download those with S3.
+public/media/*
+!public/media/.gitkeep
+
 # Work folders
 [Ww]ork/
 
