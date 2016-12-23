@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Video Selector Base</title>
+    <meta name='description' content=''>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!-- Imports -->
+    <link rel='stylesheet' href='css/normalize.css'>
+    <link rel='stylesheet' href='css/main.css'>
+    <script src='js/vendor/jquery/dist/jquery.min.js'></script>
+    <script src='js/Screensaver.js'></script>
+    <script src='js/VideoSelector.js'></script>
+
+  </head>
+  <body>
+
+    <script>
+
+      $(document).ready(() => {
+
+        // Set up Video Selector.
+        // See README for available options.
+        const options = {
+          hideCursor: false,
+          timeoutSecs: 60,
+        };
+
+        new VideoSelector(options);
+
+      });
+
+    </script>
+
+    <div id='selection_screen' data-component-num="0600" class='screen'>
+
+     <!-- ****************** -->
+     <!-- Start Editing Here -->
+     <!-- ****************** -->
+
+      <h1>Select a question to learn more.</h1>
+      <h1 class="es">Elige una pregunta para aprender más.</h1>
+
+      <div id="video-01" class='video-button'>
+        <h2>Why is a balanced diet important?</h2>
+        <h2 class="es">¿Por qué es importante una dieta balanceada?</h2>
+      </div>
+
+      <div id="video-02" class='video-button'>
+        <h2>Why is a balanced diet important?</h2>
+        <h2 class="es">¿Por qué es importante una dieta balanceada?</h2>
+      </div>
+
+      <div id="video-03" class='video-button'>
+        <h2>What’s the best way to make sure you’re fueled up for a big game?</h2>
+        <h2 class="es">¿Cuál es la mejor manera de asegurarse que uno está pleno de energía para un gran juego?</h2>
+      </div>
+
+      <div id="video-04" class='video-button'>
+        <h2>Do athletes need sports or energy drinks?</h2>
+        <h2 class="es">¿Los atletas necesitan bebidas deportivas o energéticas?</h2>
+      </div>
+
+      <div id="video-05" class='video-button'>
+        <h2>Is there a connection between eating disorders and sports?</h2>
+        <h2 class="es">¿Existe una conexión entre los trastornos alimenticios y los deportes?</h2>
+      </div>
+
+      <div id="video-06" class='video-button'>
+        <h2>What if I think a friend may have an eating disorder?</h2>
+        <h2 class="es">¿Qué hacer si creo que algún amigo tiene un trastorno alimenticio?</h2>
+      </div>
+
+      <!-- ****************** -->
+      <!-- Stop Editing Here -->
+      <!-- ****************** -->
+
+    </div>
+
+  </body>
+</html>
