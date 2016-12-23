@@ -2,55 +2,57 @@
 
 import { browserHistory } from 'react-router';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { upsertDocument } from '../api/documents/methods.js';
+import { upsertExhibitComponent } from '../api/exhibitComponents/methods.js';
 import './validation.js';
 
 let component;
 
-const handleUpsert = () => {
-  const { doc } = component.props;
-  const confirmation = doc && doc._id ? 'Document updated!' : 'Document added!';
+const handleExhibitComponentUpsert = () => {
+  const { exhibitComponent } = component.props;
+  const confirmation = exhibitComponent && exhibitComponent._id ? 'Exhibit component updated!' : 'Exhibit component added!';
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
-    body: document.querySelector('[name="body"]').value.trim(),
+    componentNumber: document.querySelector('[name="exhibitComponentNumber"]').value.trim(),
   };
+  console.log(upsert);
+  console.log('----^ ^ ^ ^ ^ upsert ^ ^ ^ ^ ^----');
 
-  if (doc && doc._id) upsert._id = doc._id;
+  if (exhibitComponent && exhibitComponent._id) upsert._id = exhibitComponent._id;
 
-  upsertDocument.call(upsert, (error, { insertedId }) => {
+  upsertExhibitComponent.call(upsert, (error, { insertedId }) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      component.documentEditorForm.reset();
+      component.exhibitComponentEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      browserHistory.push(`/documents/${insertedId || doc._id}`);
+      browserHistory.push(`/components/${insertedId || exhibitComponent._id}`);
     }
   });
 };
 
 const validate = () => {
-  $(component.documentEditorForm).validate({
+  $(component.exhibitComponentEditorForm).validate({
     rules: {
       title: {
         required: true,
       },
-      body: {
+      componentNumber: {
         required: true,
       },
     },
     messages: {
       title: {
-        required: 'Need a title in here, Seuss.',
+        required: 'Please enter a component title, it is required.',
       },
-      body: {
-        required: 'This thneeds a body, please.',
+      componentNumber: {
+        required: 'Please enter a component number, it is required.',
       },
     },
-    submitHandler() { handleUpsert(); },
+    submitHandler() { handleExhibitComponentUpsert(); },
   });
 };
 
-export default function documentEditor(options) {
+export default function exhibitComponentEditor(options) {
   component = options.component;
   validate();
 }

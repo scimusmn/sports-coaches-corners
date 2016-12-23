@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import exhibitComponentEditor from '../../modules/exhibit-component-editor';
+import exhibitComponentEditor from '../../modules/exhibit-component-editor.js';
 
-export default class DocumentEditor extends React.Component {
+export default class ExhibitComponentEditor extends React.Component {
   componentDidMount() {
     exhibitComponentEditor({ component: this });
     setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
@@ -29,7 +29,7 @@ export default class DocumentEditor extends React.Component {
         <ControlLabel>Component Number</ControlLabel>
         <FormControl
           type="text"
-          name="title"
+          name="exhibitComponentNumber"
           defaultValue={ exhibitComponent && exhibitComponent.componentNumber }
           placeholder="0000"
         />
@@ -41,6 +41,6 @@ export default class DocumentEditor extends React.Component {
   }
 }
 
-DocumentEditor.propTypes = {
+ExhibitComponentEditor.propTypes = {
   exhibitComponent: React.PropTypes.object,
 };

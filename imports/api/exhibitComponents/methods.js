@@ -3,7 +3,7 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import ExhibitComponents from './exhibitComponents';
 import rateLimit from '../../modules/rate-limit.js';
 
-export const upsertExhibitComponents = new ValidatedMethod({
+export const upsertExhibitComponent = new ValidatedMethod({
   name: 'exhibitComponents.upsert',
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
@@ -11,11 +11,11 @@ export const upsertExhibitComponents = new ValidatedMethod({
     componentNumber: { type: String, optional: true },
   }).validator(),
   run(document) {
-    return ExhibitComponents.upsert({ _id: exhibitComponent._id }, { $set: document });
+    return ExhibitComponents.upsert({ _id: document._id }, { $set: document });
   },
 });
 
-export const removeExhibitComponents = new ValidatedMethod({
+export const removeExhibitComponent = new ValidatedMethod({
   name: 'exhibitComponents.remove',
   validate: new SimpleSchema({
     _id: { type: String },
@@ -27,8 +27,8 @@ export const removeExhibitComponents = new ValidatedMethod({
 
 rateLimit({
   methods: [
-    upsertExhibitComponents,
-    removeExhibitComponents,
+    upsertExhibitComponent,
+    removeExhibitComponent,
   ],
   limit: 5,
   timeRange: 1000,
