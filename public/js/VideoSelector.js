@@ -10,8 +10,6 @@ class VideoSelector {
 
   constructor(options) {
     const componentNum = $('#selection_screen').data('component-num');
-    console.log(componentNum);
-    console.log('----^ ^ ^ ^ ^ componentNum ^ ^ ^ ^ ^----');
 
     // Collect options
     // (values on right are defaults)
@@ -78,8 +76,6 @@ class VideoSelector {
     $videoButton.each((index, element) => {
       const $element = $(element);
       const elementId = $element.attr('id');
-      console.log(elementId);
-      console.log('----^ ^ ^ ^ ^ elementId ^ ^ ^ ^ ^----');
       const videoId = elementId.replace('video-', '');
       $element.prepend(`<img src="media/${componentNum}/${videoId}.png" />`);
 
@@ -91,7 +87,6 @@ class VideoSelector {
   }
 
   readyVideoPlayer() {
-    console.log('readyVideoPlayer');
 
     let fullscreenPlayer = "<div id='player_screen' class='screen' style='display:none;'>";
     fullscreenPlayer += this.getVidDiv('fullscreen_video', '');
@@ -108,7 +103,6 @@ class VideoSelector {
   }
 
   readyScreensaver() {
-    console.log('readyScreensaver', this.screensaver);
 
     // 3 minute screensaver timeout (one minute more than longest video)
     return new Screensaver(this.timeoutSecs, this.screensaver,
