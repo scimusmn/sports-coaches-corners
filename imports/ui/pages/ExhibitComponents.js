@@ -11,7 +11,7 @@ const ExhibitComponents = () => (
           <Button
             bsStyle="success"
             className="pull-right"
-            href="/documents/new"
+            href="/components/new"
           >New Component</Button>
         </div>
         <ExhibitComponentsList />

@@ -5,8 +5,9 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import App from '../../ui/layouts/App.js';
-import Documents from '../../ui/pages/Documents.js';
 import ExhibitComponents from '../../ui/pages/ExhibitComponents.js';
+import NewExhibitComponent from '../../ui/pages/NewExhibitComponent.js';
+import Documents from '../../ui/pages/Documents.js';
 import NewDocument from '../../ui/pages/NewDocument.js';
 import EditDocument from '../../ui/containers/EditDocument.js';
 import ViewDocument from '../../ui/containers/ViewDocument.js';
@@ -32,6 +33,7 @@ Meteor.startup(() => {
       <Route path="/" component={ App }>
         <IndexRoute name="index" component={ Index } />
         <Route name="exhibitComponents" path="/components" component={ ExhibitComponents } />
+        <Route name="newExhibitComponents" path="/components/new" component={ NewExhibitComponent } />
         <Route name="documents" path="/documents" component={ Documents } />
         <Route name="newDocument" path="/documents/new" component={ NewDocument } />
         <Route name="editDocument" path="/documents/:_id/edit" component={ EditDocument } />

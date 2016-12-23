@@ -1,0 +1,46 @@
+/* eslint-disable max-len, no-return-assign */
+
+import React from 'react';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import exhibitComponentEditor from '../../modules/exhibit-component-editor';
+
+export default class DocumentEditor extends React.Component {
+  componentDidMount() {
+    exhibitComponentEditor({ component: this });
+    setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
+  }
+
+  render() {
+    const { exhibitComponent } = this.props;
+    return (<form
+      ref={ form => (this.exhibitComponentEditorForm = form) }
+      onSubmit={ event => event.preventDefault() }
+    >
+      <FormGroup>
+        <ControlLabel>Title</ControlLabel>
+        <FormControl
+          type="text"
+          name="title"
+          defaultValue={ exhibitComponent && exhibitComponent.title }
+          placeholder="Oh, The Places You'll Go!"
+        />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Component Number</ControlLabel>
+        <FormControl
+          type="text"
+          name="title"
+          defaultValue={ exhibitComponent && exhibitComponent.componentNumber }
+          placeholder="0000"
+        />
+      </FormGroup>
+      <Button type="submit" bsStyle="success">
+        { exhibitComponent && exhibitComponent._id ? 'Save Changes' : 'Add Exhibit Component' }
+      </Button>
+    </form>);
+  }
+}
+
+DocumentEditor.propTypes = {
+  exhibitComponent: React.PropTypes.object,
+};
