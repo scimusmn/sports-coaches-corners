@@ -9,10 +9,14 @@ function processEventData(event) {
 class VideoSelector {
 
   constructor(options) {
+    const componentNum = $('#selection_screen').data('component-num');
+    console.log(componentNum);
+    console.log('----^ ^ ^ ^ ^ componentNum ^ ^ ^ ^ ^----');
+
     // Collect options
     // (values on right are defaults)
     this.timeoutSecs = options.timeoutSecs || 60;
-    this.screensaver = options.screensaver || 'videos/screensaver.mp4';
+    this.screensaver = options.screensaver || `media/${componentNum}/ss.mp4`;
     this.background = options.background || 'images/background.png';
     this.animation = options.animation; // Defaults to false
     this.hideCursor = options.hideCursor; // Defaults to false
