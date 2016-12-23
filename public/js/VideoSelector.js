@@ -60,8 +60,8 @@ class VideoSelector {
       });
 
       // Launch fullscreen video player
-      // TODO: find this based on the ID value
-      const src = $(event.currentTarget).attr('video-path');
+      const selectedVideoId = $(event.currentTarget)[0].id.replace('video-', '');
+      const src = `media/${componentNum}/${selectedVideoId}.mp4`;
       VideoSelector.showSelectedVideo(src);
     });
 
