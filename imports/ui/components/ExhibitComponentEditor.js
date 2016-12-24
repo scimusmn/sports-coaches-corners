@@ -29,7 +29,7 @@ export default class ExhibitComponentEditor extends React.Component {
         <ControlLabel>Component Number</ControlLabel>
         <FormControl
           type="text"
-          name="exhibitComponentNumber"
+          name="componentNumber"
           defaultValue={ exhibitComponent && exhibitComponent.componentNumber }
           placeholder="0000"
         />

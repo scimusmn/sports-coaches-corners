@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import App from '../../ui/layouts/App.js';
 import ExhibitComponents from '../../ui/pages/ExhibitComponents.js';
 import NewExhibitComponent from '../../ui/pages/NewExhibitComponent.js';
+import ViewExhibitComponent from '../../ui/containers/ViewExhibitComponent.js';
 import Documents from '../../ui/pages/Documents.js';
 import NewDocument from '../../ui/pages/NewDocument.js';
 import EditDocument from '../../ui/containers/EditDocument.js';
@@ -34,6 +35,7 @@ Meteor.startup(() => {
         <IndexRoute name="index" component={ Index } />
         <Route name="exhibitComponents" path="/components" component={ ExhibitComponents } />
         <Route name="newExhibitComponents" path="/components/new" component={ NewExhibitComponent } />
+        <Route name="viewExhibitComponent" path="/components/:_id" component={ ViewExhibitComponent } />
         <Route name="documents" path="/documents" component={ Documents } />
         <Route name="newDocument" path="/documents/new" component={ NewDocument } />
         <Route name="editDocument" path="/documents/:_id/edit" component={ EditDocument } />
