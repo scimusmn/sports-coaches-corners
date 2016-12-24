@@ -3,10 +3,10 @@ import { ListGroup, ListGroupItem, Alert } from 'react-bootstrap';
 
 const ExhibitComponentsList = ({ exhibitComponents }) => (
   exhibitComponents.length > 0 ? <ListGroup className="DocumentsList">
-    {exhibitComponents.map(({ _id, title, componentNumber}) => (
+    {exhibitComponents.map(({ _id, title, componentNumber }) => (
       <ListGroupItem
         key={ _id }
-        href={`/components/${_id}`}>
+        href={`/components/${componentNumber}`}>
         { componentNumber } - { title }
       </ListGroupItem>
     ))}
