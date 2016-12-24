@@ -7,11 +7,14 @@ const PublicNavigation = () => (
     <LinkContainer to="components">
       <NavItem eventKey={ 1 } href="/components">Components</NavItem>
     </LinkContainer>
+    <LinkContainer to="videos">
+      <NavItem eventKey={ 2 } href="/videos">Videos</NavItem>
+    </LinkContainer>
     <LinkContainer to="signup">
-      <NavItem eventKey={ 2 } href="/signup">Sign Up</NavItem>
+      <NavItem eventKey={ 3 } href="/signup">Sign Up</NavItem>
     </LinkContainer>
     <LinkContainer to="login">
-      <NavItem eventKey={ 3 } href="/login">Log In</NavItem>
+      <NavItem eventKey={ 4 } href="/login">Log In</NavItem>
     </LinkContainer>
   </Nav>
 );
