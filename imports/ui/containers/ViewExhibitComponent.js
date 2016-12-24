@@ -5,7 +5,7 @@ import ViewExhibitComponent from '../pages/ViewExhibitComponent.js';
 import Loading from '../components/Loading.js';
 
 const composer = ({ params }, onData) => {
-  const subscription = Meteor.subscribe('exhibitComponents.view', params._id);
+  const subscription = Meteor.subscribe('exhibitComponents.view', params.componentNumber);
 
   if (subscription.ready()) {
     const exhibitComponent = ExhibitComponents.findOne();

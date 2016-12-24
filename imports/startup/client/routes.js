@@ -35,7 +35,7 @@ Meteor.startup(() => {
         <IndexRoute name="index" component={ Index } />
         <Route name="exhibitComponents" path="/components" component={ ExhibitComponents } />
         <Route name="newExhibitComponents" path="/components/new" component={ NewExhibitComponent } />
-        <Route name="viewExhibitComponent" path="/components/:_id" component={ ViewExhibitComponent } />
+        <Route name="viewExhibitComponent" path="/components/:componentNumber" component={ ViewExhibitComponent } />
         <Route name="documents" path="/documents" component={ Documents } />
         <Route name="newDocument" path="/documents/new" component={ NewDocument } />
         <Route name="editDocument" path="/documents/:_id/edit" component={ EditDocument } />
