@@ -8,23 +8,24 @@ import './validation.js';
 let component;
 
 const handleVideoUpsert = () => {
-  const { Video } = component.props;
-  const confirmation = Video && Video._id ? 'Video updated!' : 'Video added!';
+  const { video } = component.props;
+  const confirmation = video && video._id ? 'Video updated!' : 'Video added!';
   const upsert = {
     componentNumber: document.querySelector('[name="componentNumber"]').value.trim(),
     questionEn: document.querySelector('[name="questionEn"]').value.trim(),
     questionEs: document.querySelector('[name="questionEs"]').value.trim(),
+    videoNumber: document.querySelector('[name="videoNumber"]').value.trim(),
   };
 
-  if (Video && Video._id) upsert._id = Video._id;
+  if (video && video._id) upsert._id = video._id;
 
   upsertVideo.call(upsert, (error, { insertedId }) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      component.VideoEditorForm.reset();
+      component.videoEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      browserHistory.push(`/components/${insertedId || Video._id}`);
+      browserHistory.push('/videos');
     }
   });
 };
@@ -32,7 +33,7 @@ const handleVideoUpsert = () => {
 const requiredMessage = (element) => `Please enter a ${element}. It is required.`;
 
 const validate = () => {
-  $(component.VideoEditorForm).validate({
+  $(component.videoEditorForm).validate({
     rules: {
       componentNumber: {
         required: true,
@@ -43,7 +44,7 @@ const validate = () => {
       questionEs: {
         required: true,
       },
-      videoNum: {
+      videoNumber: {
         required: true,
       },
     },

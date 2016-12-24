@@ -9,13 +9,12 @@ let component;
 
 const handleExhibitComponentUpsert = () => {
   const { exhibitComponent } = component.props;
-  const confirmation = exhibitComponent && exhibitComponent._id ? 'Exhibit component updated!' : 'Exhibit component added!';
+  const confirmation = exhibitComponent && exhibitComponent._id ?
+    'Exhibit component updated!' : 'Exhibit component added!';
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
     componentNumber: document.querySelector('[name="componentNumber"]').value.trim(),
   };
-  console.log(upsert);
-  console.log('----^ ^ ^ ^ ^ upsert ^ ^ ^ ^ ^----');
 
   if (exhibitComponent && exhibitComponent._id) upsert._id = exhibitComponent._id;
 

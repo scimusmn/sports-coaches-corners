@@ -30,7 +30,7 @@ Videos.schema = new SimpleSchema({
     type: String,
     label: 'Question title for the video. In Spanish.',
   },
-  videoNum: {
+  videoNumber: {
     type: Number,
     label: 'Video number. Used to connect the video with associated media.',
   },
@@ -42,5 +42,5 @@ Factory.define('document', Videos, {
   componentNumber: () => 'Factory Component Number',
   questionEn: () => 'Factory English Question',
   questionEs: () => 'Factory Spanish Question',
-  videoNum: () => 'Factory Video Number',
+  videoNumber: () => 'Factory Video Number',
 });

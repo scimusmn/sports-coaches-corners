@@ -26,6 +26,15 @@ export default class VideoEditor extends React.Component {
         />
       </FormGroup>
       <FormGroup>
+        <ControlLabel>Video number</ControlLabel>
+        <FormControl
+          type="text"
+          name="videoNumber"
+          defaultValue={ video && video.videoNumber }
+          placeholder="Video number"
+        />
+      </FormGroup>
+      <FormGroup>
         <ControlLabel>Question</ControlLabel>
         <FormControl
           type="text"

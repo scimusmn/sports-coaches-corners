@@ -24,7 +24,10 @@ const ViewExhibitComponent = ({ exhibitComponent }) => (
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
           <Button href={`/components/${exhibitComponent._id}/edit`}>Edit</Button>
-          <Button onClick={ () => handleExhibitComponentRemove(exhibitComponent._id) } className="text-danger">Delete</Button>
+          <Button
+            onClick={ () => handleExhibitComponentRemove(exhibitComponent._id) }
+            className="text-danger">Delete
+          </Button>
         </ButtonGroup>
       </ButtonToolbar>
     </div>

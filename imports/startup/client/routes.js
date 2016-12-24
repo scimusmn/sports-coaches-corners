@@ -43,13 +43,22 @@ Meteor.startup(() => {
 
         {/* Exhibit Components */}
         <Route name="exhibitComponents" path="/components" component={ ExhibitComponents } />
-        <Route name="newExhibitComponents" path="/components/new" component={ NewExhibitComponent } />
-        <Route name="viewExhibitComponent" path="/components/:componentNumber" component={ ViewExhibitComponent } />
+        <Route
+          name="newExhibitComponents" path="/components/new"
+          component={ NewExhibitComponent }
+        />
+        <Route
+          name="viewExhibitComponent" path="/components/:componentNumber"
+          component={ ViewExhibitComponent }
+        />
 
         {/* Videos */}
         <Route name="videos" path="/videos" component={ Videos } />
         <Route name="newVideo" path="/video/new" component={ NewVideo } />
-        <Route name="viewVideo" path="/componentNumber/video/:videoNumber" component={ ViewVideo } />
+        <Route
+          name="viewVideo" path="/componentNumber/video/:videoNumber"
+          component={ ViewVideo }
+        />
 
         {/* Documents */}
         <Route name="documents" path="/documents" component={ Documents } />

@@ -8,8 +8,6 @@ const composer = (params, onData) => {
   const subscription = Meteor.subscribe('videos.list');
   if (subscription.ready()) {
     const videos = Videos.find().fetch();
-    console.log(videos);
-    console.log('----^ ^ ^ ^ ^ videos ^ ^ ^ ^ ^----');
     onData(null, { videos });
   }
 };
