@@ -1,6 +1,7 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '/node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css';
+import { Link } from 'react-router'
 
 class ExhibitComponentsList extends React.Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class ExhibitComponentsList extends React.Component {
       defaultSortOrder: 'asc',
     };
 
+    function formatComponentNumber(cell) {
+      return (<Link to={`/components/${cell}`}>{cell}</Link>);
+    }
+
     return (
       <BootstrapTable
         data={ exhibitComponents }
@@ -28,6 +33,7 @@ class ExhibitComponentsList extends React.Component {
         <TableHeaderColumn
           isKey={true}
           dataField='componentNumber'
+          dataFormat={formatComponentNumber}
         >
           Component Number
         </TableHeaderColumn>
