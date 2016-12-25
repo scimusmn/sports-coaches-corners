@@ -17,21 +17,21 @@ export default class ExhibitComponentEditor extends React.Component {
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
-        <ControlLabel>Title</ControlLabel>
-        <FormControl
-          type="text"
-          name="title"
-          defaultValue={ exhibitComponent && exhibitComponent.title }
-          placeholder="Oh, The Places You'll Go!"
-        />
-      </FormGroup>
-      <FormGroup>
         <ControlLabel>Component Number</ControlLabel>
         <FormControl
           type="text"
           name="componentNumber"
           defaultValue={ exhibitComponent && exhibitComponent.componentNumber }
           placeholder="0000"
+        />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Title</ControlLabel>
+        <FormControl
+          type="text"
+          name="title"
+          defaultValue={ exhibitComponent && exhibitComponent.title }
+          placeholder="Oh, The Places You'll Go!"
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">

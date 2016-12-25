@@ -11,7 +11,7 @@ import NewExhibitComponent from '../../ui/pages/NewExhibitComponent.js';
 import ViewExhibitComponent from '../../ui/containers/ViewExhibitComponent.js';
 
 import Videos from '../../ui/pages/Videos.js';
-import NewVideo from '../../ui/pages/NewVideo.js';
+import NewVideo from '../../ui/containers/VideoCreateContainer';
 import ViewVideo from '../../ui/containers/ViewVideo.js';
 
 import Documents from '../../ui/pages/Documents.js';
