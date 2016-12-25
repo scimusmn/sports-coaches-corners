@@ -12,6 +12,7 @@ emailTemplates.resetPassword = {
   subject() {
     return `[${name}] Reset Your Password`;
   },
+
   text(user, url) {
     const userEmail = user.emails[0].address;
     const urlWithoutHash = url.replace('#/', '');

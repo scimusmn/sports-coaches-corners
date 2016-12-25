@@ -18,13 +18,17 @@ const handleExhibitComponentUpsert = () => {
 
   if (exhibitComponent && exhibitComponent._id) upsert._id = exhibitComponent._id;
 
-  upsertExhibitComponent.call(upsert, (error, { insertedId }) => {
+  upsertExhibitComponent.call(upsert, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
       component.exhibitComponentEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      browserHistory.push(`/components/${insertedId || exhibitComponent._id}`);
+
+      // Old method. TODO: re-implement or cleanup
+      // browserHistory.push(`/components/${insertedId || exhibitComponent._id}`);
+
+      browserHistory.push('/components');
     }
   });
 };

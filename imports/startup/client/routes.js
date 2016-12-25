@@ -26,6 +26,13 @@ import RecoverPassword from '../../ui/pages/RecoverPassword.js';
 import ResetPassword from '../../ui/pages/ResetPassword.js';
 import Signup from '../../ui/pages/Signup.js';
 
+//noinspection Eslint
+/**
+ * Authenticate is disabled right now
+ *
+ * TODO: Enable if you want to add in authentication in the future.
+ * For now leave it here.
+ */
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
     replace({

@@ -31,7 +31,7 @@ export default class DocumentEditor extends React.Component {
           componentClass="textarea"
           name="body"
           defaultValue={ doc && doc.body }
-          placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
+          placeholder="Placeholder text"
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">

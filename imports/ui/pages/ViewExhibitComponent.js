@@ -5,6 +5,11 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { removeExhibitComponent } from '../../api/exhibitComponents/methods.js';
 
 const handleExhibitComponentRemove = (_id) => {
+  /**
+   * TODO: Implement a new method for doing confirmation here.
+   * JS alerts are intrusive and against our style.
+   */
+  //noinspection Eslint
   if (confirm('Are you sure? This is permanent!')) {
     removeExhibitComponent.call({ _id }, (error) => {
       if (error) {

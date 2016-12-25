@@ -5,6 +5,11 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { removeDocument } from '../../api/documents/methods.js';
 
 const handleRemove = (_id) => {
+  /**
+   * TODO: Implement a new method for doing confirmation here.
+   * JS alerts are intrusive and against our style.
+   */
+  //noinspection Eslint
   if (confirm('Are you sure? This is permanent!')) {
     removeDocument.call({ _id }, (error) => {
       if (error) {
