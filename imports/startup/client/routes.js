@@ -9,6 +9,7 @@ import App from '../../ui/layouts/App.js';
 import ExhibitComponents from '../../ui/pages/ExhibitComponents.js';
 import NewExhibitComponent from '../../ui/pages/NewExhibitComponent.js';
 import ViewExhibitComponent from '../../ui/containers/ViewExhibitComponent.js';
+import EditExhibitComponent from '../../ui/containers/EditExhibitComponent.js';
 
 import Videos from '../../ui/pages/Videos.js';
 import NewVideo from '../../ui/containers/VideoCreateContainer';
@@ -57,6 +58,11 @@ Meteor.startup(() => {
         <Route
           name="viewExhibitComponent" path="/components/:componentNumber"
           component={ ViewExhibitComponent }
+        />
+        <Route
+          name="editDocument"
+          path="/components/:componentNumber/edit"
+          component={ EditExhibitComponent }
         />
 
         {/* Videos */}

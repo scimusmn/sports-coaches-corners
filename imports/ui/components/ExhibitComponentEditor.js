@@ -12,6 +12,7 @@ export default class ExhibitComponentEditor extends React.Component {
 
   render() {
     const { exhibitComponent } = this.props;
+
     return (<form
       ref={ form => (this.exhibitComponentEditorForm = form) }
       onSubmit={ event => event.preventDefault() }
@@ -31,7 +32,7 @@ export default class ExhibitComponentEditor extends React.Component {
           type="text"
           name="title"
           defaultValue={ exhibitComponent && exhibitComponent.title }
-          placeholder="Oh, The Places You'll Go!"
+          placeholder="Component short description"
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">
