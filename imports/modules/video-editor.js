@@ -19,7 +19,7 @@ const handleVideoUpsert = () => {
 
   if (video && video._id) upsert._id = video._id;
 
-  upsertVideo.call(upsert, (error, { insertedId }) => {
+  upsertVideo.call(upsert, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {

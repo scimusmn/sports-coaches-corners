@@ -9,7 +9,8 @@ const handleExhibitComponentRemove = (_id) => {
    * TODO: Implement a new method for doing confirmation here.
    * JS alerts are intrusive and against our style.
    */
-  //noinspection Eslint
+
+  // noinspection Eslint
   if (confirm('Are you sure? This is permanent!')) {
     removeExhibitComponent.call({ _id }, (error) => {
       if (error) {
