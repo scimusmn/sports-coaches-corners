@@ -1,18 +1,41 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, Alert } from 'react-bootstrap';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import '/node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css';
 
-const ExhibitComponentsList = ({ exhibitComponents }) => (
-  exhibitComponents.length > 0 ? <ListGroup className="DocumentsList">
-    {exhibitComponents.map(({ _id, title, componentNumber }) => (
-      <ListGroupItem
-        key={ _id }
-        href={`/components/${componentNumber}`}>
-        { componentNumber } - { title }
-      </ListGroupItem>
-    ))}
-  </ListGroup> :
-  <Alert bsStyle="warning">No exhibit components yet.</Alert>
-);
+class ExhibitComponentsList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      exhibitComponents: props.exhibitComponents,
+    };
+  }
+
+  render() {
+    let exhibitComponents = this.props.exhibitComponents;
+
+    const tableOptions = {
+      defaultSortName: 'componentNumber',
+      defaultSortOrder: 'asc',
+    };
+
+    return (
+      <BootstrapTable
+        data={ exhibitComponents }
+        striped={true}
+        hover={true}
+        options={ tableOptions }
+      >
+        <TableHeaderColumn
+          isKey={true}
+          dataField='componentNumber'
+        >
+          Component Number
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField='title'>Title</TableHeaderColumn>
+      </BootstrapTable>
+    );
+  }
+}
 
 ExhibitComponentsList.propTypes = {
   exhibitComponents: React.PropTypes.array,
