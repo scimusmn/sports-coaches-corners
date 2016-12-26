@@ -26,12 +26,19 @@ users.forEach(({ email, password, profile, roles }) => {
 
 /**
  * Populate content after reset
+ *
+ * Note about Meteor and the Assets object:
+ * Assets is the Meteor file access system.
+ * It's not currently possible to import Assets as an ES6 module.
+ * So even though it throws a linting error, it's fine to just use it here
+ * without importing it.
  */
 
 /**
  * Import Exhibit Components
  */
 if (ExhibitComponents.find().count() === 0) {
+  // noinspection Eslint
   const exhibitComponentData = JSON.parse(Assets.getText('exhibitComponents.json'));
   exhibitComponentData.forEach((item) => {
     ExhibitComponents.insert(item);
@@ -42,6 +49,7 @@ if (ExhibitComponents.find().count() === 0) {
  * Import videos
  */
 if (Videos.find().count() === 0) {
+  // noinspection Eslint
   const videoData = JSON.parse(Assets.getText('videos.json'));
   videoData.forEach((item) => {
     Videos.insert(item);
