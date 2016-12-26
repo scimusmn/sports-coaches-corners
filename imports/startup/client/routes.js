@@ -6,6 +6,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import App from '../../ui/layouts/App.js';
 
+import Kiosk from '../../ui/containers/KioskVideosListContainer';
+
 import ExhibitComponents from '../../ui/pages/ExhibitComponents.js';
 import NewExhibitComponent from '../../ui/pages/NewExhibitComponent.js';
 import ViewExhibitComponent from '../../ui/containers/ViewExhibitComponent.js';
@@ -48,6 +50,11 @@ Meteor.startup(() => {
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
         <IndexRoute name="index" component={ Index } />
+
+        {/* Kiosk routes */}
+        <Route name="kiosk" path="/kiosk/:componentNumber" component={ Kiosk } />
+
+        {/* Admin routes */}
 
         {/* Exhibit Components */}
         <Route name="exhibitComponents" path="/components" component={ ExhibitComponents } />
