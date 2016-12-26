@@ -16,13 +16,14 @@ import EditExhibitComponent from '../../ui/containers/EditExhibitComponent.js';
 import Videos from '../../ui/pages/Videos.js';
 import NewVideo from '../../ui/containers/VideoCreateContainer';
 import ViewVideo from '../../ui/containers/ViewVideo.js';
+import EditVideo from '../../ui/containers/EditVideo.js';
 
 import Documents from '../../ui/pages/Documents.js';
 import NewDocument from '../../ui/pages/NewDocument.js';
 import EditDocument from '../../ui/containers/EditDocument.js';
 import ViewDocument from '../../ui/containers/ViewDocument.js';
 
-import Index from '../../ui/pages/Index.js';
+import Index from '../../ui/containers/IndexList';
 import Login from '../../ui/pages/Login.js';
 import NotFound from '../../ui/pages/NotFound.js';
 import RecoverPassword from '../../ui/pages/RecoverPassword.js';
@@ -49,6 +50,7 @@ Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
+
         <IndexRoute name="index" component={ Index } />
 
         {/* Kiosk routes */}
@@ -76,8 +78,14 @@ Meteor.startup(() => {
         <Route name="videos" path="/videos" component={ Videos } />
         <Route name="newVideo" path="/video/new" component={ NewVideo } />
         <Route
-          name="viewVideo" path="/components/:componentNumber/video/:videoNumber"
+          name="viewVideo"
+          path="/components/:componentNumber/video/:videoNumber"
           component={ ViewVideo }
+        />
+        <Route
+          name="editVideo"
+          path="/components/:componentNumber/video/:videoNumber/edit"
+          component={ EditVideo }
         />
 
         {/* Documents */}

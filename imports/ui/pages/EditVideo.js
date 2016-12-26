@@ -4,7 +4,7 @@ import VideoEditor from '../components/VideoEditor';
 const EditVideo = ({ exhibitComponents, video }) => (
   <div className="EditVideo">
     <h4 className="page-header">Editing "{ video.questionEn }"</h4>
-    <VideoEditor components={ exhibitComponents } video={ video } />
+    <VideoEditor exhibitComponents={ exhibitComponents } video={ video } />
   </div>
 );
 

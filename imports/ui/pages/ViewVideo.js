@@ -29,13 +29,20 @@ const ViewVideo = ({ video }) => (
       <h4 className="pull-left">{ video.title }</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
-          <Button href={`/videos/${video._id}/edit`}>Edit</Button>
+
+          <Button
+            href={`/components/${video.componentNumber}/video/${video.videoNumber}/edit`}
+          >
+            Edit
+          </Button>
+
           <Button
             onClick={ () => handleVideoRemove(video._id) }
             className="text-danger"
           >
             Delete
           </Button>
+
         </ButtonGroup>
       </ButtonToolbar>
     </div>
