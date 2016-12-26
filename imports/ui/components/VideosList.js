@@ -23,7 +23,7 @@ class VideosList extends React.Component {
     }
 
     function formatVideoNumber(cell, row) {
-      return (<Link to={`/components/${row.componentNumber}/videos/${cell}`}>{cell}</Link>);
+      return (<Link to={`/components/${row.componentNumber}/video/${cell}`}>{cell}</Link>);
     }
 
     return (

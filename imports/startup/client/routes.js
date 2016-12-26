@@ -69,7 +69,7 @@ Meteor.startup(() => {
         <Route name="videos" path="/videos" component={ Videos } />
         <Route name="newVideo" path="/video/new" component={ NewVideo } />
         <Route
-          name="viewVideo" path="/componentNumber/video/:videoNumber"
+          name="viewVideo" path="/components/:componentNumber/video/:videoNumber"
           component={ ViewVideo }
         />
 
