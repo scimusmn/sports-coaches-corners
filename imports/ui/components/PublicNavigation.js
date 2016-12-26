@@ -10,12 +10,6 @@ const PublicNavigation = () => (
     <LinkContainer to="videos">
       <NavItem eventKey={ 2 } href="/videos">Videos</NavItem>
     </LinkContainer>
-    <LinkContainer to="signup">
-      <NavItem eventKey={ 3 } href="/signup">Sign Up</NavItem>
-    </LinkContainer>
-    <LinkContainer to="login">
-      <NavItem eventKey={ 4 } href="/login">Log In</NavItem>
-    </LinkContainer>
   </Nav>
 );
 
