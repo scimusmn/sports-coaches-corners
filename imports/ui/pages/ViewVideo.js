@@ -39,7 +39,20 @@ const ViewVideo = ({ video }) => (
         </ButtonGroup>
       </ButtonToolbar>
     </div>
-    { video.componentNumber }
+    Component number: { video.componentNumber }<br/>
+    Video number: { video.videoNumber }<br/>
+    Question: { video.questionEn }<br/>
+    Spanish question: { video.questionEs }<br/>
+    Image:<br/>
+    <img src={`/media/${video.componentNumber}/0${video.videoNumber}.png`}/>
+    <br/>
+    Video:<br/>
+    <video
+      width="800"
+      height="600"
+      autoPlay="autoplay">
+      <source src={`/media/${video.componentNumber}/0${video.videoNumber}.mp4`} type="video/mp4"/>
+    </video>
   </div>
 );
 
