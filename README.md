@@ -1,17 +1,17 @@
-# The Meteor Chef - Base
-A starting point for Meteor apps.
+# Sports - Coaches Corners - Video selector
 
-<table>
-  <tbody>
-    <tr>
-      <th>Base Version</th>
-      <td>v4.10.0</td>
-    </tr>
-    <tr>
-      <th>Meteor Version</th>
-      <td>v1.4.2.3</td>
-    </tr>
-  </tbody>
-</table>
+Video selector for the Sports exhibit at the Science Museum of Minnesota
 
-[Read the Documentation](http://themeteorchef.com/base)
+## Saving content to a file
+
+    mongoexport --port 3001 --db meteor --collection ExhibitComponents --pretty --jsonArray --out exhibitComponents.json
+    mongoexport --port 3001 --db meteor --collection Videos --pretty --jsonArray --out videos.json
+    
+## Loading content from the file
+Warning, this is destructive.
+
+    meteor reset
+    meteor
+
+This will erase everything in your local database and update it with the json
+files that are tracked in Git.
