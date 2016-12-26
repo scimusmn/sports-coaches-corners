@@ -50,12 +50,13 @@ const authenticate = (nextState, replace) => {
 Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
+
+      {/* Kiosk routes */}
+      <Route name="kiosk" path="/kiosk/:componentNumber" component={ Kiosk } />
+
       <Route path="/" component={ App }>
 
         <IndexRoute name="index" component={ Index } />
-
-        {/* Kiosk routes */}
-        <Route name="kiosk" path="/kiosk/:componentNumber" component={ Kiosk } />
 
         {/* Admin routes */}
 
