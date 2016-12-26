@@ -19,8 +19,61 @@ body {
   background-image: url('/images/background.png');
 }
 
-.videoCard {
-  font-family: "Avenir Next Condensed Bold", sans-serif;
+/**
+ * Selection screen - Headlines
+ */
+h1 {
+  margin-top: 54px;
+  font-family: 'Avenir Next Condensed Bold', sans-serif;
+  text-align: center;
+  line-height: 70px;
+  font-size: 65px;
 }
+
+h1 span.en,
+h2 span.en{
+  color: #afafaa;
+}
+
+h1 span.es,
+h2 span.es{
+  font-size: 90%;
+  color: #f26322;
+}
+
+/**
+ * Selection screen - Button positions
+ */
+#selection-screen .video-button {
+  font-family: "Avenir Next Condensed Bold", sans-serif;
+  background-color: rgba(46, 46, 46, 0.85);
+  z-index: 1;
+  position: absolute;
+  top: 265px;
+  left: 30px;
+  width: 600px;
+  min-height: 350px;
+}
+
+#selection-screen .video-button img {
+  margin: 20px;
+}
+
+#selection-screen #video-02,
+#selection-screen #video-04 {
+  left: 658px;
+}
+
+#selection-screen #video-03,
+#selection-screen #video-06 {
+  left: 1287px;
+}
+
+#selection-screen #video-04,
+#selection-screen #video-05,
+#selection-screen #video-06 {
+  top: 663px;
+}
+
 
 
