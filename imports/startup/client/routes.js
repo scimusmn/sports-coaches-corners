@@ -36,6 +36,7 @@ import Signup from '../../ui/pages/Signup.js';
  * TODO: Enable if you want to add in authentication in the future.
  * For now leave it here.
  */
+
 // noinspection Eslint
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {

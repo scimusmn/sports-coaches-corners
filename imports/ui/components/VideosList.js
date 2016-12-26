@@ -54,7 +54,6 @@ class VideosList extends React.Component {
         <TableHeaderColumn dataField='questionEs'>Spanish question</TableHeaderColumn>
       </BootstrapTable>
     );
-
   }
 
 }
