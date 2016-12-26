@@ -1,18 +1,63 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, Alert } from 'react-bootstrap';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { Link } from 'react-router';
 
-const VideosList = ({ videos }) => (
-  videos.length > 0 ? <ListGroup className="VideosList">
-    {videos.map(({ _id, componentNumber, questionEn, questionEs, videoNumber }) => (
-      <ListGroupItem
-        key={ _id }
-        href={`/videos/${videoNumber}`}>
-        { componentNumber } - { videoNumber } - { questionEn } - { questionEs }
-      </ListGroupItem>
-    ))}
-  </ListGroup> :
-  <Alert bsStyle="warning">No videos yet.</Alert>
-);
+class VideosList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      videos: props.videos,
+    };
+  }
+
+  render() {
+    let videos = this.props.videos;
+
+    const tableOptions = {
+      defaultSortName: 'componentNumber',
+      defaultSortOrder: 'asc',
+    };
+
+    function formatComponentNumber(cell) {
+      return (<Link to={`/components/${cell}`}>{cell}</Link>);
+    }
+
+    function formatVideoNumber(cell, row) {
+      return (<Link to={`/components/${row.componentNumber}/videos/${cell}`}>{cell}</Link>);
+    }
+
+    return (
+      <BootstrapTable
+        data={ videos }
+        striped={true}
+        hover={true}
+        options={ tableOptions }
+      >
+        <TableHeaderColumn isKey dataField='_id' hidden >
+          Id
+        </TableHeaderColumn>
+        <TableHeaderColumn
+          dataField='componentNumber'
+          dataFormat={formatComponentNumber}
+          defaultSortOrder="asc"
+        >
+          Component Number
+        </TableHeaderColumn>
+        <TableHeaderColumn
+          dataField='videoNumber'
+          dataFormat={formatVideoNumber}
+          defaultSortOrder="asc"
+        >
+          Video Number
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField='questionEn'>Question</TableHeaderColumn>
+        <TableHeaderColumn dataField='questionEs'>Spanish question</TableHeaderColumn>
+      </BootstrapTable>
+    );
+
+  }
+
+}
 
 VideosList.propTypes = {
   videos: React.PropTypes.array,
