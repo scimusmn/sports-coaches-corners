@@ -9,3 +9,18 @@
 @import "module/Signup";
 
 @import "state/Navbar";
+
+body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  color: #e5e5e5;
+  background-color: #000;
+  background-image: url('/images/background.png');
+}
+
+.videoCard {
+  font-family: "Avenir Next Condensed Bold", sans-serif;
+}
+
+

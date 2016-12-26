@@ -11,14 +11,15 @@ class KioskVideoList extends React.Component {
   render() {
     const videos = this.props.videos;
     const videoCards = videos.map((video) =>
-      <li key={video._id}>{video.videoNumber} - {video.questionEn} - {video.questionEs}</li>
+      <div className="videoCard" key={video._id}>
+        {video.questionEn}<br/>
+        {video.questionEs}
+      </div>
     );
 
     return (
       <div>
-        <ul>
           {videoCards}
-        </ul>
       </div>
     );
   }
