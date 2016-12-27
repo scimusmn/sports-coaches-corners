@@ -12,7 +12,8 @@ class KioskVideoList extends React.Component {
     this.state = {
       videos: props.videos,
       playing: props.playing,
-      playingVideo: null,
+      componentNumber: props.componentNumber,
+      selectedVideo: null,
       showModal: false,
     };
   }
@@ -20,7 +21,7 @@ class KioskVideoList extends React.Component {
   launchVideoPlayer(e) {
     this.setState({
       playing: true,
-      playingVideo: e.currentTarget.id,
+      selectedVideo: e.currentTarget.id,
       showModal: true,
     });
   }
@@ -46,7 +47,8 @@ class KioskVideoList extends React.Component {
       <VideoCard
         launchVideoPlayer={this.launchVideoPlayer.bind(this)}
         key={video._id}
-        video={video}/>
+        video={video}
+      />
     );
 
     return (
@@ -69,6 +71,8 @@ class KioskVideoList extends React.Component {
           <div>
             <VideoPlayer
               handleHomeClick={this.closeModal.bind(this)}
+              componentNumber={this.state.componentNumber}
+              selectedVideo={this.state.selectedVideo}
             />
           </div>
         </Modal>
@@ -82,6 +86,7 @@ class KioskVideoList extends React.Component {
 KioskVideoList.propTypes = {
   videos: React.PropTypes.array,
   playing: React.PropTypes.bool,
+  componentNumber: React.PropTypes.string,
   playingVideo: React.PropTypes.string,
 };
 

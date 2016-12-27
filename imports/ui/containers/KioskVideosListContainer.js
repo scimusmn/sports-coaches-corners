@@ -10,7 +10,8 @@ const composer = ({ params }, onData) => {
   if (subscription.ready()) {
     const videos = Videos.find().fetch();
     const playing = false;
-    onData(null, { videos, playing });
+    const componentNumber = params.componentNumber;
+    onData(null, { videos, playing, componentNumber });
   }
 };
 
