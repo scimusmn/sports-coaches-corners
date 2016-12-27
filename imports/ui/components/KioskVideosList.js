@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import Modal from '/node_modules/react-overlays/lib/Modal';
+import VideoCard from './VideosCard';
 
 let VelocityComponent = require('/node_modules/velocity-react/velocity-component');
 
@@ -68,11 +69,16 @@ class KioskVideoList extends React.Component {
     );
     return (
       <div key="unique" id="selection-screen">
+        {/* Coaches Corner headline title */}
         <h1>
           <div className="en">Select a question to learn more.</div>
           <div className="es">Elige una pregunta para aprender más.</div>
         </h1>
+
+        {/* Question buttons */}
         {videoCards}
+
+        {/* Modal video player */}
         <Modal
           aria-labelledby='modal-label'
           style={modalStyle}
@@ -81,8 +87,7 @@ class KioskVideoList extends React.Component {
           onHide={this.close.bind(this)}
         >
           <div style={dialogStyle()} >
-            <h4 id='modal-label'>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+            Video player here
           </div>
         </Modal>
       </div>
@@ -101,77 +106,5 @@ KioskVideoList.propTypes = {
   playing: React.PropTypes.bool,
   playingVideo: React.PropTypes.string,
 };
-
-class VideoCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      video: props.video,
-      active: 'False',
-    };
-  }
-
-  handleClick(e) {
-    this.setState({ active: 'True' });
-    this.props.handleVideoClick(e);
-  }
-
-  render() {
-    const { video } = this.props;
-    const paddedVideoNumber = _.padStart(video.videoNumber, 2, '0');
-    const buttonImagePath = `/media/${video.componentNumber}/${paddedVideoNumber}.png`;
-
-    const cardClass = () => {
-      if (this.state.active === 'False') {
-        return 'video-button inactive';
-      } else {
-        return 'video-button active';
-      }
-    };
-
-    return (
-      <div
-        onClick={this.handleClick.bind(this)}
-        className={cardClass()}
-        id={`video-${paddedVideoNumber}`}
-      >
-        <img src={buttonImagePath}/>
-        <h2>
-          <div className="en">{video.questionEn}</div>
-          <div className="es">{video.questionEs}</div>
-        </h2>
-      </div>
-    );
-  }
-
-}
-
-VideoCard.propTypes = {
-  video: React.PropTypes.object,
-  handleVideoClick: React.PropTypes.func,
-};
-
-class VideoPlayer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      video: props.video,
-      active: 'False',
-    };
-  }
-
-  render() {
-    return (
-      <div className="video-player">Test</div>
-    );
-  }
-
-}
-
-VideoPlayer.propTypes = {
-  video: React.PropTypes.object,
-  active: React.PropTypes.string,
-};
-
 
 export default KioskVideoList;
