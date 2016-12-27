@@ -10,19 +10,9 @@ class VideoPlayer extends React.Component {
     };
   }
 
-  handleHomeClick(e) {
-    console.log(e);
-    console.log('----^ ^ ^ ^ ^ e ^ ^ ^ ^ ^----');
-    // this.setState({
-    //   playing: false,
-    //   showModal: false,
-    // });
-    this.props.handleHomeClick(e);
-  }
-
   render() {
     return (
-      <div onClick={this.handleHomeClick.bind(this)} className="video-player">
+      <div onClick={this.props.handleHomeClick.bind(this)} className="video-player">
         <video autoPlay>
           <source src="example.mp4" type="video/mp4"/>
         </video>

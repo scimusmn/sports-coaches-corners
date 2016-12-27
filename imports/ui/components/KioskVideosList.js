@@ -19,7 +19,7 @@ class KioskVideoList extends React.Component {
     };
   }
 
-  handleVideoClick(e) {
+  launchVideoPlayer(e) {
     this.setState({
       playing: true,
       playingVideo: e.currentTarget.id,
@@ -27,8 +27,7 @@ class KioskVideoList extends React.Component {
     });
   }
 
-  handleHomeClick(e) {
-    console.log('closing');
+  closeModal(e) {
     this.setState({ showModal: false });
   }
 
@@ -48,7 +47,7 @@ class KioskVideoList extends React.Component {
      */
     const videoCards = this.props.videos.map((video) =>
       <VideoCard
-        handleVideoClick={this.handleVideoClick.bind(this)}
+        launchVideoPlayer={this.launchVideoPlayer.bind(this)}
         key={video._id}
         video={video}/>
     );
@@ -69,21 +68,16 @@ class KioskVideoList extends React.Component {
         <Modal
           style={modalStyle}
           show={this.state.showModal}
-          onHide={this.close.bind(this)}
         >
           <div>
             <VideoPlayer
-              handleHomeClick={this.handleHomeClick.bind(this)}
+              handleHomeClick={this.closeModal.bind(this)}
             />
           </div>
         </Modal>
 
       </div>
     );
-  }
-
-  close() {
-    this.setState({ showModal: false });
   }
 
 }

@@ -13,9 +13,12 @@ class VideoCard extends React.Component {
     };
   }
 
-  handleClick(e) {
+  handleVideoSelect(e) {
+    // Animate state of the clicked button
     this.setState({ active: 'True' });
-    this.props.handleVideoClick(e);
+
+    // Send parent component the video launch event
+    this.props.launchVideoPlayer(e);
   }
 
   render() {
@@ -33,7 +36,7 @@ class VideoCard extends React.Component {
 
     return (
       <div
-        onClick={this.handleClick.bind(this)}
+        onClick={this.handleVideoSelect.bind(this)}
         className={cardClass()}
         id={`video-${paddedVideoNumber}`}
       >
@@ -50,7 +53,7 @@ class VideoCard extends React.Component {
 
 VideoCard.propTypes = {
   video: React.PropTypes.object,
-  handleVideoClick: React.PropTypes.func,
+  launchVideoPlayer: React.PropTypes.func,
 };
 
 export default VideoCard;
