@@ -6,13 +6,23 @@ class KioskVideoList extends React.Component {
     super(props);
     this.state = {
       videos: props.videos,
+      playing: props.playing,
     };
+  }
+
+  handleVideoClick() {
+    this.setState({
+      playing: 'True',
+    });
   }
 
   render() {
     const videos = this.props.videos;
     const videoCards = videos.map((video) =>
-      <VideoCard key={video._id} video={video}/>
+      <VideoCard
+        handleVideoClick={this.handleVideoClick.bind(this)}
+        key={video._id}
+        video={video}/>
     );
     return (
       <div key="unique" id="selection-screen">
@@ -29,6 +39,7 @@ class KioskVideoList extends React.Component {
 
 KioskVideoList.propTypes = {
   videos: React.PropTypes.array,
+  playing: React.PropTypes.string,
 };
 
 class VideoCard extends React.Component {
@@ -39,12 +50,20 @@ class VideoCard extends React.Component {
     };
   }
 
+  handleClick(e) {
+    console.log(e);
+    console.log('----^ ^ ^ ^ ^ e ^ ^ ^ ^ ^----');
+    console.log('Click');
+  }
+
   render() {
     const { video } = this.props;
     const paddedVideoNumber = _.padStart(video.videoNumber, 2, '0');
     const buttonImagePath = `/media/${video.componentNumber}/${paddedVideoNumber}.png`;
+
     return (
       <div
+        onClick={this.props.handleVideoClick}
         className="video-button"
         id={`video-${paddedVideoNumber}`}
       >
@@ -61,6 +80,7 @@ class VideoCard extends React.Component {
 
 VideoCard.propTypes = {
   video: React.PropTypes.object,
+  handleVideoClick: React.PropTypes.func,
 };
 
 export default KioskVideoList;
