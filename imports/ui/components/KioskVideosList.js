@@ -10,7 +10,7 @@ class KioskVideoList extends React.Component {
     };
   }
 
-  handleVideoClick() {
+  handleVideoClick(e) {
     this.setState({
       playing: 'True',
     });
@@ -47,13 +47,13 @@ class VideoCard extends React.Component {
     super(props);
     this.state = {
       video: props.video,
+      active: 'False',
     };
   }
 
   handleClick(e) {
-    console.log(e);
-    console.log('----^ ^ ^ ^ ^ e ^ ^ ^ ^ ^----');
-    console.log('Click');
+    this.setState({ active: 'True' });
+    this.props.handleVideoClick(e);
   }
 
   render() {
@@ -61,10 +61,18 @@ class VideoCard extends React.Component {
     const paddedVideoNumber = _.padStart(video.videoNumber, 2, '0');
     const buttonImagePath = `/media/${video.componentNumber}/${paddedVideoNumber}.png`;
 
+    const cardClass = () => {
+      if (this.state.active === 'False') {
+        return 'video-button inactive';
+      } else {
+        return 'video-button active';
+      }
+    };
+
     return (
       <div
-        onClick={this.props.handleVideoClick}
-        className="video-button"
+        onClick={this.handleClick.bind(this)}
+        className={cardClass()}
         id={`video-${paddedVideoNumber}`}
       >
         <img src={buttonImagePath}/>

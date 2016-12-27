@@ -95,6 +95,11 @@ h2 div.es {
   min-height: 375px;
 }
 
+#selection-screen .video-button.active {
+  transition: .1s ease;
+  transform:scale(0.95);
+}
+
 #selection-screen .video-button img {
   margin: 20px;
 }
