@@ -1,4 +1,5 @@
 import React from 'react';
+import VideoHomeButton from './VideoHomeButton';
 
 class VideoPlayer extends React.Component {
 
@@ -6,7 +7,6 @@ class VideoPlayer extends React.Component {
     super(props);
     this.state = {
       video: props.video,
-      active: 'False',
     };
   }
 
@@ -16,15 +16,18 @@ class VideoPlayer extends React.Component {
 
     return (
       <div className="video-player">
-        <video autoPlay>
+
+        <video muted autoPlay>
           <source
             src={`/media/${this.props.componentNumber}/${selectedVideo()}.mp4`}
             type="video/mp4"
           />
         </video>
-        <div onClick={this.props.handleHomeClick.bind(this)} className="home-button">
-          <img src="/images/home.png" />
-        </div>
+
+        <VideoHomeButton
+          homeAction={this.props.handleHomeAction.bind(this)}
+        />
+
       </div>
     );
   }
@@ -33,8 +36,7 @@ class VideoPlayer extends React.Component {
 
 VideoPlayer.propTypes = {
   video: React.PropTypes.object,
-  active: React.PropTypes.string,
-  handleHomeClick: React.PropTypes.func,
+  handleHomeAction: React.PropTypes.func,
   componentNumber: React.PropTypes.string,
   selectedVideo: React.PropTypes.string,
 };

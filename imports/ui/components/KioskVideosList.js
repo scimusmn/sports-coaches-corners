@@ -14,7 +14,7 @@ class KioskVideoList extends React.Component {
       playing: props.playing,
       componentNumber: props.componentNumber,
       selectedVideo: null,
-      showModal: false,
+      showVideo: false,
     };
   }
 
@@ -22,12 +22,12 @@ class KioskVideoList extends React.Component {
     this.setState({
       playing: true,
       selectedVideo: e.currentTarget.id,
-      showModal: true,
+      showVideo: true,
     });
   }
 
   closeModal(e) {
-    this.setState({ showModal: false });
+    this.setState({ showVideo: false });
   }
 
   render() {
@@ -66,15 +66,16 @@ class KioskVideoList extends React.Component {
         {/* Modal video player */}
         <Modal
           style={modalStyle}
-          show={this.state.showModal}
+          show={this.state.showVideo}
         >
           <div>
             <VideoPlayer
-              handleHomeClick={this.closeModal.bind(this)}
+              handleHomeAction={this.closeModal.bind(this)}
               componentNumber={this.state.componentNumber}
               selectedVideo={this.state.selectedVideo}
             />
           </div>
+
         </Modal>
 
       </div>
