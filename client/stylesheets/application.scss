@@ -19,26 +19,66 @@ body {
   background-image: url('/images/background.png');
 }
 
+
 /**
- * Selection screen - Headlines
+ * Selection screen - English and Spanish colors
+ */
+.en{
+  color: #afafaa;
+}
+
+.es{
+  color: #f26322;
+}
+
+/**
+ * Selection screen - Top level headline
  */
 h1 {
-  margin-top: 54px;
-  font-family: 'Avenir Next Condensed Bold', sans-serif;
   text-align: center;
+}
+
+h1 div.en {
+  margin-top: 52px;
+}
+
+h1 div.en,
+h1 div.es {
+  font-family: 'Avenir Next Condensed Bold', sans-serif;
   line-height: 70px;
   font-size: 65px;
 }
 
-h1 span.en,
-h2 span.en{
-  color: #afafaa;
+h1 div.es {
+  font-size: 58px;
 }
 
-h1 span.es,
-h2 span.es{
-  font-size: 90%;
-  color: #f26322;
+/**
+ * Selection screen - Video button questions
+ */
+h2 { margin-top: 0}
+
+/* Slightly lighter shade to increase the contrast and improve readability */
+/* TODO: review with designers */
+h2 div.es {
+  color: #f5763c;
+}
+
+h2 div.en,
+h2 div.es {
+  font-family: 'Avenir Next Condensed Medium', sans-serif;
+  margin: 0 0 0 20px;
+  line-height: 35px;
+  font-size: 23px;
+}
+
+h2 div.en {
+  border-bottom: 2px solid #ebed4f;
+  margin: 0 20px 0 20px;
+}
+
+h2 div.es {
+  margin: 5px 20px 0 20px;
 }
 
 /**
@@ -49,10 +89,10 @@ h2 span.es{
   background-color: rgba(46, 46, 46, 0.85);
   z-index: 1;
   position: absolute;
-  top: 265px;
+  top: 249px;
   left: 30px;
-  width: 600px;
-  min-height: 350px;
+  width: 591px;
+  min-height: 375px;
 }
 
 #selection-screen .video-button img {

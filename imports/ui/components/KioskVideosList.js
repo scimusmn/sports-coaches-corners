@@ -17,8 +17,8 @@ class KioskVideoList extends React.Component {
     return (
       <div key="unique" id="selection-screen">
         <h1>
-          <span className="en">Select a question to learn more.</span><br/>
-          <span className="es">Elige una pregunta para aprender más.</span>
+          <div className="en">Select a question to learn more.</div>
+          <div className="es">Elige una pregunta para aprender más.</div>
         </h1>
         {videoCards}
       </div>
@@ -49,8 +49,10 @@ class VideoCard extends React.Component {
         id={`video-${paddedVideoNumber}`}
       >
         <img src={buttonImagePath}/>
-        {video.questionEn}<br/>
-        {video.questionEs}
+        <h2>
+          <div className="en">{video.questionEn}</div>
+          <div className="es">{video.questionEs}</div>
+        </h2>
       </div>
     );
   }
