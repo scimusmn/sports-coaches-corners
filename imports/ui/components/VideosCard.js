@@ -9,13 +9,14 @@ class VideoCard extends React.Component {
     super(props);
     this.state = {
       video: props.video,
-      active: 'False',
+      playing: false,
+      active: false,
     };
   }
 
   handleVideoSelect(e) {
     // Animate state of the clicked button
-    this.setState({ active: 'True' });
+    this.setState({ active: true });
 
     // Send parent component the video launch event
     this.props.launchVideoPlayer(e);
@@ -26,18 +27,10 @@ class VideoCard extends React.Component {
     const paddedVideoNumber = _.padStart(video.videoNumber, 2, '0');
     const buttonImagePath = `/media/${video.componentNumber}/${paddedVideoNumber}.png`;
 
-    const cardClass = () => {
-      if (this.state.active === 'False') {
-        return 'video-button inactive';
-      } else {
-        return 'video-button active';
-      }
-    };
-
     return (
       <div
         onClick={this.handleVideoSelect.bind(this)}
-        className={cardClass()}
+        className='video-button'
         id={`video-${paddedVideoNumber}`}
       >
         <img src={buttonImagePath}/>
@@ -52,6 +45,7 @@ class VideoCard extends React.Component {
 }
 
 VideoCard.propTypes = {
+  playing: React.PropTypes.bool,
   video: React.PropTypes.object,
   launchVideoPlayer: React.PropTypes.func,
 };

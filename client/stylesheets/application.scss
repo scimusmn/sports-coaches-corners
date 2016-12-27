@@ -97,7 +97,7 @@ h2 div.es {
 }
 
 #selection-screen .video-button.active {
-  transition: .1s ease;
+  transition: .5s ease;
   transform:scale(0.95);
 }
 
@@ -132,7 +132,21 @@ h2 div.es {
   left:0;
   width: 1920px;
   height: 1080px;
-  //opacity: 0;
+  z-index: 3;
+  opacity: 1;
+}
+
+.video-player.playing {
+  opacity: 1;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
 
 .home-button {

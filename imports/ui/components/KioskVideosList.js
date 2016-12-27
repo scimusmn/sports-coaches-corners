@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import Modal from '/node_modules/react-overlays/lib/Modal';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import VideoCard from './VideosCard';
 import VideoPlayer from './VideoPlayer';
 
@@ -13,7 +14,7 @@ class KioskVideoList extends React.Component {
       videos: props.videos,
       playing: props.playing,
       componentNumber: props.componentNumber,
-      selectedVideo: null,
+      selectedVideo: '0',
       showVideo: false,
     };
   }
@@ -27,18 +28,11 @@ class KioskVideoList extends React.Component {
   }
 
   closeModal(e) {
-    this.setState({ showVideo: false });
+    console.log('----^ ^ ^ ^ ^ Clicked ^ ^ ^ ^ ^----');
+    this.setState({ playing: false });
   }
 
   render() {
-    const modalStyle = {
-      position: 'fixed',
-      zIndex: 1040,
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    };
 
     /**
      * Loop through the videos and render a card for each question
@@ -46,6 +40,7 @@ class KioskVideoList extends React.Component {
     const videoCards = this.props.videos.map((video) =>
       <VideoCard
         launchVideoPlayer={this.launchVideoPlayer.bind(this)}
+        playing={this.state.playing}
         key={video._id}
         video={video}
       />
@@ -64,19 +59,24 @@ class KioskVideoList extends React.Component {
         {videoCards}
 
         {/* Modal video player */}
-        <Modal
-          style={modalStyle}
-          show={this.state.showVideo}
-        >
-          <div>
-            <VideoPlayer
-              handleHomeAction={this.closeModal.bind(this)}
-              componentNumber={this.state.componentNumber}
-              selectedVideo={this.state.selectedVideo}
-            />
-          </div>
-
-        </Modal>
+        {
+          this.state.playing
+            ?
+            <ReactCSSTransitionGroup
+              transitionName="example"
+              transitionAppear={true}
+              transitionAppearTimeout={500}
+              transitionEnter={false}
+              transitionLeave={false}>
+              <VideoPlayer
+                videoPlaying={this.state.playing}
+                handleHomeAction={this.closeModal.bind(this)}
+                componentNumber={this.state.componentNumber}
+                selectedVideo={this.state.selectedVideo}
+              />
+            </ReactCSSTransitionGroup>
+            : null
+        }
 
       </div>
     );
