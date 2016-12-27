@@ -9,7 +9,7 @@ const composer = ({ params }, onData) => {
 
   if (subscription.ready()) {
     const videos = Videos.find().fetch();
-    const playing = 'False';
+    const playing = false;
     onData(null, { videos, playing});
   }
 };

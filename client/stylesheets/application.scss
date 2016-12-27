@@ -120,5 +120,21 @@ h2 div.es {
   top: 663px;
 }
 
+/**
+ * Video player
+ *
+ * Starts out transparent and gets animated in on a play event.
+ */
+.video-player {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 1920px;
+  height: 1080px;
+  background: #f26322;
+  font-size: 100px;
+  opacity: 0;
+}
+
 
 
