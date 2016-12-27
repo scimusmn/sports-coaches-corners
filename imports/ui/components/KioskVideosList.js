@@ -6,8 +6,6 @@ import VideoPlayer from './VideoPlayer';
 
 let VelocityComponent = require('/node_modules/velocity-react/velocity-component');
 
-let rand = ()=> (Math.floor(Math.random() * 20) - 10);
-
 class KioskVideoList extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +37,6 @@ class KioskVideoList extends React.Component {
       bottom: 0,
       left: 0,
       right: 0,
-      background: 'red',
     };
 
     /**
