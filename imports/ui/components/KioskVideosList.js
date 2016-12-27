@@ -27,6 +27,11 @@ class KioskVideoList extends React.Component {
     });
   }
 
+  handleHomeClick(e) {
+    console.log('closing');
+    this.setState({ showModal: false });
+  }
+
   render() {
     const modalStyle = {
       position: 'fixed',
@@ -67,13 +72,14 @@ class KioskVideoList extends React.Component {
           onHide={this.close.bind(this)}
         >
           <div>
-            <VideoPlayer/>
+            <VideoPlayer
+              handleHomeClick={this.handleHomeClick.bind(this)}
+            />
           </div>
         </Modal>
 
       </div>
     );
-
   }
 
   close() {

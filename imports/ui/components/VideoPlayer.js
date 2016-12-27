@@ -17,6 +17,7 @@ class VideoPlayer extends React.Component {
     //   playing: false,
     //   showModal: false,
     // });
+    this.props.handleHomeClick(e);
   }
 
   render() {
@@ -35,6 +36,7 @@ class VideoPlayer extends React.Component {
 VideoPlayer.propTypes = {
   video: React.PropTypes.object,
   active: React.PropTypes.string,
+  handleHomeClick: React.PropTypes.func,
 };
 
 export default VideoPlayer;
