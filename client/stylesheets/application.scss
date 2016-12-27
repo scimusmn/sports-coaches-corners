@@ -140,11 +140,12 @@ h2 div.es {
   bottom: 0;
   left: 0;
   text-align: center;
+  margin: 0;
+  //background: rgba(120, 120, 120, .5);
+  padding: 42px 85px 42px 41px;
 }
 
 .home-button img {
   width: 60px;
-  margin: 0 0 40px 50px;
   opacity: .5;
-  transition: .1s ease;
 }
