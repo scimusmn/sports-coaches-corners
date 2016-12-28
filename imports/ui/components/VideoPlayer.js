@@ -16,7 +16,10 @@ class VideoPlayer extends React.Component {
 
       <div className="video-player">
 
-        <video autoPlay>
+        <video
+          onEnded={this.props.handleHomeAction.bind(this)}
+          autoPlay="autoplay"
+        >
           <source
             src={`/media/${this.props.componentNumber}/${selectedVideo()}.mp4`}
             type="video/mp4"
