@@ -21,12 +21,3 @@ Meteor.methods({
   },
 });
 
-if (Meteor.isServer) {
-  Meteor.call('getLatestMedia', (error, response) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log(response);
-    }
-  });
-}
