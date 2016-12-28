@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Application description.",
   "scripts": {
+    "kiosk": "meteor --settings settings-kiosk.json --once",
     "start": "meteor --settings settings-development.json",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 5000",
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",

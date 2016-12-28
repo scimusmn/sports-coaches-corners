@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import VideoCard from './VideosCard';
@@ -26,7 +27,8 @@ class KioskVideoList extends React.Component {
   timerIncrement() {
     const idleTime = this.state.idleTime + 1;
     this.setState({ idleTime });
-    if (this.state.idleTime >= 300) {
+    const screenSaverTimeout = Meteor.settings.public.screenSaverTimeout;
+    if (this.state.idleTime >= screenSaverTimeout) {
       this.setState({
         playing: false,
         screenSaver: 'active',
