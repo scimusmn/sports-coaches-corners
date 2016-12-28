@@ -3,7 +3,7 @@ import { Grid } from 'react-bootstrap';
 import AppNavigation from '../containers/AppNavigation.js';
 
 const App = ({ children }) => (
-  <div>
+  <div class="admin">
     <AppNavigation />
     <Grid>
       { children }

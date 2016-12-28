@@ -14,11 +14,16 @@ body {
   width: 1920px;
   height: 1080px;
   overflow: hidden;
-  color: #e5e5e5;
   background-color: #000;
   background-image: url('/images/background.png');
 }
 
+.ExhibitComponents,
+.Videos,
+.NewVideo {
+  background-color: #FFF;
+  padding: 0 40px 40px 40px;
+}
 
 /**
  * Selection screen - English and Spanish colors
