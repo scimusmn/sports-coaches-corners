@@ -3,6 +3,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import VideoCard from './VideosCard';
 import VideoPlayer from './VideoPlayer';
+import VideoPlayerScreenSaver from './VideoPlayerScreenSaver';
 
 class KioskVideoList extends React.Component {
   constructor(props) {
@@ -120,7 +121,9 @@ class KioskVideoList extends React.Component {
               onClick={this.clearScreenSaver.bind(this)}
               className="screensaver"
             >
-              Screensaver
+              <VideoPlayerScreenSaver
+                componentNumber={this.state.componentNumber}
+              />
             </div>
             : null
         }
