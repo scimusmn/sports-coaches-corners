@@ -1,11 +1,7 @@
 import React from 'react';
-import _ from 'lodash';
-import Modal from '/node_modules/react-overlays/lib/Modal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import VideoCard from './VideosCard';
 import VideoPlayer from './VideoPlayer';
-
-let VelocityComponent = require('/node_modules/velocity-react/velocity-component');
 
 class KioskVideoList extends React.Component {
   constructor(props) {
@@ -16,7 +12,43 @@ class KioskVideoList extends React.Component {
       componentNumber: props.componentNumber,
       selectedVideo: '0',
       showVideo: false,
+      idleTime: 0,
+      screenSaver: 'inactive',
     };
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.timerIncrement();
+    }, 1000);
+  }
+
+  timerIncrement() {
+    const idleTime = this.state.idleTime + 1;
+    this.setState({ idleTime });
+    if (this.state.idleTime >= 300) {
+      this.setState({
+        playing: false,
+        screenSaver: 'active',
+      });
+    }
+  }
+
+  resetScreenSaverTimer() {
+    console.log('Resetting the screensaver timer');
+    this.setState({
+      idleTime: 0,
+      screenSaver: 'inactive',
+    });
+  }
+
+  clearScreenSaver() {
+    console.log('Clearing the screensaver');
+    this.setState({
+      idleTime: 0,
+      screenSaver: 'inactive',
+      playing: false,
+    });
   }
 
   launchVideoPlayer(e) {
@@ -47,7 +79,7 @@ class KioskVideoList extends React.Component {
     );
 
     return (
-      <div key="unique" id="selection-screen">
+      <div onClick={this.resetScreenSaverTimer.bind(this)} key="unique" id="selection-screen">
 
         {/* Coaches Corner headline title */}
         <h1>
@@ -75,6 +107,19 @@ class KioskVideoList extends React.Component {
                 selectedVideo={this.state.selectedVideo}
               />
             </ReactCSSTransitionGroup>
+            : null
+        }
+
+        {/* Modal screen saver */}
+        {
+          this.state.screenSaver === 'active'
+            ?
+            <div
+              onClick={this.clearScreenSaver.bind(this)}
+              className="screensaver"
+            >
+              Screensaver
+            </div>
             : null
         }
 

@@ -163,3 +163,14 @@ h2 div.es {
   width: 60px;
   opacity: .5;
 }
+
+.screensaver {
+  position: absolute;
+  background: darkred;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  color: white;
+  z-index: 4;
+}
