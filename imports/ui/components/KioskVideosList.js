@@ -104,7 +104,7 @@ class KioskVideoList extends React.Component {
     );
 
     return (
-      <div onClick={this.resetScreenSaverTimer.bind(this)} key='unique' id='selection-screen'>
+      <div onClick={this.resetScreenSaverTimer.bind(this)} key='unique' id='selection-screen' className={'card-count-' + this.props.videos.length}>
 
         {/* Coaches Corner headline title *//* Coaches Corner headline title */}
         <h1>
