@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import VideoCard from './VideosCard';
 import VideoPlayer from './VideoPlayer';
 import VideoPlayerScreenSaver from './VideoPlayerScreenSaver';
+import logger from '../../modules/logger';
 
 class KioskVideoList extends React.Component {
   constructor(props) {
@@ -30,10 +31,17 @@ class KioskVideoList extends React.Component {
     this.setState({ idleTime });
     const screenSaverTimeout = Meteor.settings.public.screenSaverTimeout;
     if (this.state.idleTime >= screenSaverTimeout) {
+
+      if (this.state.screenSaver == 'inactive') {
+        // Log for analytics
+        logger.info({message:'inactivity-timeout', inactiveTime:screenSaverTimeout * 1000,});
+      }
+
       this.setState({
         playing: false,
         screenSaver: 'active',
       });
+
     }
   }
 
@@ -60,11 +68,24 @@ class KioskVideoList extends React.Component {
       selectedVideo: e.currentTarget.id,
       showVideo: true,
     });
+
+    // Log for analytics
+    const posIndex = e.currentTarget.getAttribute('data-pos-index');
+    logger.info({ message:'video-selected',
+                  kiosk: this.props.location.pathname,
+                  selectedVideo:e.currentTarget.id,
+                  positionIndex:posIndex,
+                  });
+
   }
 
-  closeModal(e) {
-    console.log('----^ ^ ^ ^ ^ Clicked ^ ^ ^ ^ ^----');
+  closeModal(vidData) {
+
     this.setState({ playing: false });
+
+    // Log for analytics
+    logger.info({message:'video-exit', vidData});
+
   }
 
   render() {
@@ -72,33 +93,34 @@ class KioskVideoList extends React.Component {
     /**
      * Loop through the videos and render a card for each question
      */
-    const videoCards = this.props.videos.map((video) =>
+    const videoCards = this.props.videos.map((video, index) =>
       <VideoCard
         launchVideoPlayer={this.launchVideoPlayer.bind(this)}
         playing={this.state.playing}
         key={video._id}
+        positionIndex={index}
         video={video}
       />
     );
 
     return (
-      <div onClick={this.resetScreenSaverTimer.bind(this)} key="unique" id="selection-screen">
+      <div onClick={this.resetScreenSaverTimer.bind(this)} key='unique' id='selection-screen'>
 
-        {/* Coaches Corner headline title */}
+        {/* Coaches Corner headline title *//* Coaches Corner headline title */}
         <h1>
-          <div className="en">Select a question to learn more.</div>
-          <div className="es">Elige una pregunta para aprender más.</div>
+          <div className='en'>Select a question to learn more.</div>
+          <div className='es'>Elige una pregunta para aprender más.</div>
         </h1>
 
-        {/* Question buttons */}
+        {/* Question buttons *//* Question buttons */}
         {videoCards}
 
-        {/* Modal video player */}
+        {/* Modal video player *//* Modal video player */}
         {
           this.state.playing
             ?
             <ReactCSSTransitionGroup
-              transitionName="example"
+              transitionName='example'
               transitionAppear={true}
               transitionAppearTimeout={500}
               transitionEnter={false}
@@ -113,13 +135,13 @@ class KioskVideoList extends React.Component {
             : null
         }
 
-        {/* Modal screen saver */}
+        {/* Modal screen saver *//* Modal screen saver */}
         {
           this.state.screenSaver === 'active'
             ?
             <div
               onClick={this.clearScreenSaver.bind(this)}
-              className="screensaver"
+              className='screensaver'
             >
               <VideoPlayerScreenSaver
                 componentNumber={this.state.componentNumber}

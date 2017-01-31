@@ -31,6 +31,7 @@ class VideoCard extends React.Component {
       <div
         onClick={this.handleVideoSelect.bind(this)}
         className='video-button'
+        data-pos-index={this.props.positionIndex}
         id={`video-${paddedVideoNumber}`}
       >
         <img src={buttonImagePath}/>
@@ -48,6 +49,7 @@ VideoCard.propTypes = {
   playing: React.PropTypes.bool,
   video: React.PropTypes.object,
   launchVideoPlayer: React.PropTypes.func,
+  positionIndex: React.PropTypes.number,
 };
 
 export default VideoCard;

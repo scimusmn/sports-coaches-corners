@@ -7,6 +7,19 @@ class VideoPlayer extends React.Component {
     this.state = {
       videoPlaying: props.videoPlaying,
     };
+
+    this.localHomeAction = this.localHomeAction.bind(this);
+
+  }
+
+  localHomeAction(e) {
+
+    const vidData = { vidId:this.props.selectedVideo,
+                      percentWatched:(this.refs.mainVideo.currentTime / this.refs.mainVideo.duration).toFixed(2),
+                      vidDuration:this.refs.mainVideo.duration,};
+
+    this.props.handleHomeAction(vidData);
+
   }
 
   render() {
@@ -14,20 +27,21 @@ class VideoPlayer extends React.Component {
 
     return (
 
-      <div className="video-player">
+      <div className='video-player'>
 
         <video
-          onEnded={this.props.handleHomeAction.bind(this)}
-          autoPlay="autoplay"
+          onEnded={this.localHomeAction}
+          autoPlay='autoplay'
+          ref='mainVideo'
         >
           <source
             src={`/media/${this.props.componentNumber}/${selectedVideo()}.mp4`}
-            type="video/mp4"
+            type='video/mp4'
           />
         </video>
 
         <VideoHomeButton
-          homeAction={this.props.handleHomeAction.bind(this)}
+          homeAction={this.localHomeAction}
         />
 
       </div>
