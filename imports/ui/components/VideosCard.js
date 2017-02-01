@@ -10,19 +10,24 @@ class VideoCard extends React.Component {
     this.state = {
       video: props.video,
       playing: false,
-      active: false,
     };
   }
 
   handleVideoSelect(e) {
-    // Animate state of the clicked button
-    this.setState({ active: true });
 
     // Send parent component the video launch event
     this.props.launchVideoPlayer(e);
+
+  }
+
+  getClassy() {
+
+    return 'video-button ' + ((this.props.isActive == true) ? 'active' : '');
+
   }
 
   render() {
+
     const { video } = this.props;
     const paddedVideoNumber = _.padStart(video.videoNumber, 2, '0');
     const buttonImagePath = `/media/${video.componentNumber}/${paddedVideoNumber}.png`;
@@ -30,14 +35,15 @@ class VideoCard extends React.Component {
     return (
       <div
         onClick={this.handleVideoSelect.bind(this)}
-        className='video-button'
+        className={this.getClassy()}
         data-pos-index={this.props.positionIndex}
+        data-vid-num={video.videoNumber}
         id={`video-${paddedVideoNumber}`}
       >
         <img src={buttonImagePath}/>
         <h2>
-          <div className="en">{video.questionEn}</div>
-          <div className="es">{video.questionEs}</div>
+          <div className='en'>{video.questionEn}</div>
+          <div className='es'>{video.questionEs}</div>
         </h2>
       </div>
     );
@@ -50,6 +56,7 @@ VideoCard.propTypes = {
   video: React.PropTypes.object,
   launchVideoPlayer: React.PropTypes.func,
   positionIndex: React.PropTypes.number,
+  isActive: React.PropTypes.bool,
 };
 
 export default VideoCard;

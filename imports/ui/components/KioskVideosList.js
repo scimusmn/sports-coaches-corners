@@ -15,10 +15,12 @@ class KioskVideoList extends React.Component {
       transitioning: false,
       componentNumber: props.componentNumber,
       selectedVideo: '0',
+      selectedIndex: -1,
       showVideo: false,
       idleTime: 0,
       screenSaver: 'inactive',
     };
+    this.videoCards = {};
   }
 
   componentDidMount() {
@@ -63,15 +65,27 @@ class KioskVideoList extends React.Component {
     });
   }
 
+  isActiveCard(index) {
+
+    if (index == this.state.selectedIndex) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   launchVideoPlayer(e) {
+
+    const posIndex = e.currentTarget.getAttribute('data-pos-index');
+
     this.setState({
       playing: true,
       selectedVideo: e.currentTarget.id,
+      selectedIndex: posIndex,
       showVideo: true,
     });
 
     // Log for analytics
-    const posIndex = e.currentTarget.getAttribute('data-pos-index');
     logger.info({ message:'video-selected',
                   kiosk: this.props.location.pathname,
                   selectedVideo:e.currentTarget.id,
@@ -91,9 +105,9 @@ class KioskVideoList extends React.Component {
 
       setTimeout(()=> {
 
-        this.setState({ transitioning: false });
+        this.setState({ transitioning: false, selectedIndex:-1 });
 
-      }, 1000);
+      }, 400);
 
     }
 
@@ -104,13 +118,14 @@ class KioskVideoList extends React.Component {
     /**
      * Loop through the videos and render a card for each question
      */
-    const videoCards = this.props.videos.map((video, index) =>
+    this.videoCards = this.props.videos.map((video, index) =>
       <VideoCard
         launchVideoPlayer={this.launchVideoPlayer.bind(this)}
         playing={this.state.playing}
         key={video._id}
         positionIndex={index}
         video={video}
+        isActive={this.isActiveCard(index)}
       />
     );
 
@@ -124,14 +139,12 @@ class KioskVideoList extends React.Component {
         </h1>
 
         {/* Question buttons *//* Question buttons */}
-        {videoCards}
+        {this.videoCards}
 
         {/* Modal video player *//* Modal video player */}
         <ReactCSSTransitionGroup
               transitionName='example'
               transitionAppear={false}
-              transitionAppearTimeout={10}
-              transitionEnter={true}
               transitionEnterTimeout={500}
               transitionLeaveTimeout={400}>
 

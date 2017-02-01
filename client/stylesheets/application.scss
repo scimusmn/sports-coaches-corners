@@ -70,7 +70,7 @@ h1 div.es {
 /**
  * Selection screen - Video button questions
  */
-.video-button h2 { margin-top: 0}
+.video-button h2 { margin-top: 0 }
 
 /* Slightly lighter shade to increase the contrast and improve readability */
 /* TODO: review with designers */
@@ -108,11 +108,18 @@ h2 div.es {
   left: 30px;
   width: 591px;
   min-height: 375px;
+  transition: all .2s ease-out;
+}
+
+#selection-screen .video-button:active {
+  transform: scale(0.99) translate(0px, 2px);
+  transition: all .05s ease-out;
+  background-color: rgba(44, 44, 44, 0.8);
 }
 
 #selection-screen .video-button.active {
-  transition: .5s ease;
-  transform:scale(0.95);
+  transform: scale(1.06) translate(0px, -2px);
+  background-color: rgba(48, 48, 48, 0.95);
 }
 
 #selection-screen .video-button img {
@@ -182,13 +189,18 @@ h2 div.es {
   left: 0;
   text-align: center;
   margin: 0;
-  //background: rgba(120, 120, 120, .5);
   padding: 42px 85px 42px 41px;
 }
 
 .home-button img {
   width: 60px;
   opacity: .5;
+  transition: all .1s ease-out;
+}
+
+.home-button:active img {
+  transform: scale(0.96);
+  opacity: .75;
 }
 
 .screensaver {
