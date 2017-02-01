@@ -135,11 +135,11 @@ h2 div.es {
   top: 663px;
 }
 
-#selection-screen.card-count-5 #video-04 {
+#selection-screen.vid-count-5 #video-04 {
   left: 349px;
 }
 
-#selection-screen.card-count-5 #video-05 {
+#selection-screen.vid-count-5 #video-05 {
   left: 980px;
 }
 
@@ -159,16 +159,21 @@ h2 div.es {
 }
 
 .video-player.playing {
-  opacity: 1;
+  opacity: 0.1;
 }
 
-.example-appear {
+.example-enter {
   opacity: 0.01;
 }
 
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+.example-enter.example-enter-active {
+  opacity: 1.0;
+  transition: opacity 0.5s ease-in;
+}
+
+.example-leave {
+   opacity: 0.0;
+   transition: opacity 0.3s ease-out;
 }
 
 .home-button {

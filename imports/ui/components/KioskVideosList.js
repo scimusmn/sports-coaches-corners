@@ -12,6 +12,7 @@ class KioskVideoList extends React.Component {
     this.state = {
       videos: props.videos,
       playing: props.playing,
+      transitioning: false,
       componentNumber: props.componentNumber,
       selectedVideo: '0',
       showVideo: false,
@@ -81,10 +82,20 @@ class KioskVideoList extends React.Component {
 
   closeModal(vidData) {
 
-    this.setState({ playing: false });
+    if (this.state.transitioning == false) {
 
-    // Log for analytics
-    logger.info({message:'video-exit', vidData});
+      this.setState({ transitioning: true, playing: false });
+
+      // Log for analytics
+      logger.info({message:'video-exit', vidData});
+
+      setTimeout(()=> {
+
+        this.setState({ transitioning: false });
+
+      }, 1000);
+
+    }
 
   }
 
@@ -104,7 +115,7 @@ class KioskVideoList extends React.Component {
     );
 
     return (
-      <div onClick={this.resetScreenSaverTimer.bind(this)} key='unique' id='selection-screen' className={'card-count-' + this.props.videos.length}>
+      <div onClick={this.resetScreenSaverTimer.bind(this)} key='unique' id='selection-screen' className={'vid-count-' + this.props.videos.length}>
 
         {/* Coaches Corner headline title *//* Coaches Corner headline title */}
         <h1>
@@ -116,24 +127,27 @@ class KioskVideoList extends React.Component {
         {videoCards}
 
         {/* Modal video player *//* Modal video player */}
-        {
-          this.state.playing
-            ?
-            <ReactCSSTransitionGroup
+        <ReactCSSTransitionGroup
               transitionName='example'
-              transitionAppear={true}
-              transitionAppearTimeout={500}
-              transitionEnter={false}
-              transitionLeave={false}>
+              transitionAppear={false}
+              transitionAppearTimeout={10}
+              transitionEnter={true}
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={400}>
+
+          {(this.state.playing)
+            ?
+
               <VideoPlayer
                 videoPlaying={this.state.playing}
                 handleHomeAction={this.closeModal.bind(this)}
                 componentNumber={this.state.componentNumber}
                 selectedVideo={this.state.selectedVideo}
               />
-            </ReactCSSTransitionGroup>
+
             : null
-        }
+          }
+          </ReactCSSTransitionGroup>
 
         {/* Modal screen saver *//* Modal screen saver */}
         {
