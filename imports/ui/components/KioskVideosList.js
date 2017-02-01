@@ -107,7 +107,7 @@ class KioskVideoList extends React.Component {
 
         this.setState({ transitioning: false, selectedIndex:-1 });
 
-      }, 400);
+      }, 150);
 
     }
 
