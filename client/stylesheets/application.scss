@@ -119,7 +119,7 @@ h2 div.es {
 
 #selection-screen .video-button.active {
   transform: scale(1.06) translate(0px, -2px);
-  background-color: rgba(48, 48, 48, 0.95);
+  background-color: rgba(115, 115, 115, 0.5);
 }
 
 #selection-screen .video-button img {
@@ -142,10 +142,20 @@ h2 div.es {
   top: 663px;
 }
 
+/**
+ * Rules for kiosks with fewer videos
+ */
+#selection-screen.vid-count-4 #video-03{
+  top: 663px;
+}
+
+#selection-screen.vid-count-4 #video-01,
+#selection-screen.vid-count-4 #video-03,
 #selection-screen.vid-count-5 #video-04 {
   left: 349px;
 }
-
+#selection-screen.vid-count-4 #video-02,
+#selection-screen.vid-count-4 #video-04,
 #selection-screen.vid-count-5 #video-05 {
   left: 980px;
 }
