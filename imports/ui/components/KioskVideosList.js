@@ -143,7 +143,7 @@ class KioskVideoList extends React.Component {
 
         {/* Modal video player *//* Modal video player */}
         <ReactCSSTransitionGroup
-              transitionName='example'
+              transitionName='player-fade'
               transitionAppear={false}
               transitionEnterTimeout={500}
               transitionLeaveTimeout={400}>

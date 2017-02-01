@@ -179,16 +179,16 @@ h2 div.es {
   opacity: 0.1;
 }
 
-.example-enter {
+.player-fade-enter {
   opacity: 0.01;
 }
 
-.example-enter.example-enter-active {
+.player-fade-enter.player-fade-enter-active {
   opacity: 1.0;
   transition: opacity 0.5s ease-in;
 }
 
-.example-leave {
+.player-fade-leave {
    opacity: 0.0;
    transition: opacity 0.3s ease-out;
 }
